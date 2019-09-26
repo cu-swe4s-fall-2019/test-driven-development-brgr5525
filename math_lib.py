@@ -1,6 +1,31 @@
+"""Different math and analysis functions
+
+    * list_mean - returns the arithmetic mean of an array
+    * list_stdev - returns the arithmetic standard deviation of an array
+"""
 import math
 
+
 def list_mean(L):
+    """Compute the arithmetic mean of an array. Expects a non-empty array.
+
+    Parameters
+    __________
+    L : list of int and float
+        Non-empty list containing numbers whose mean is desired.
+
+    Returns
+    _______
+    float
+        Mean of the values in L.
+    None
+        Returns 'None' if L is null or empty.
+
+    Raises
+    ______
+    ValueError
+        Occurs when there is a non -int or -float value in L.
+    """
     if L is None:
         return None
 
@@ -17,7 +42,25 @@ def list_mean(L):
 
 
 def list_stdev(L):
-    #math.sqrt(sum([(m-x)**2 for x in L]) / len(L))
+    """Compute the standard deviation of an array. Expects a non-empty array.
+
+    Parameters
+    __________
+    L : list of int and float
+        Non-empty list containing numbers whose stdev is desired.
+
+    Returns
+    _______
+    float
+        Standard deviation of the values in L based on mean.
+    None
+        Returns 'None' if L contains a single element or list_mean(L) is None.
+
+    Raises
+    ______
+    ValueError
+        Occurs when there is a non -int or -float value in L.
+    """
     try:
         m = list_mean(L)
     except ValueError:
