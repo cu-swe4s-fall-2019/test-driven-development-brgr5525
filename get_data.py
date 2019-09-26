@@ -1,31 +1,37 @@
+"""Function to get get_data
+
+    * read_stdin_col - reads data from STDIN and returns an array of numbers
+
+"""
 import sys
 
 
 def read_stdin_col(col_num):
-    file_name = sys.stdin
+    """Read STDIN and extracts data from specified column to return
 
-    try:
-        f = open(file_name)
-    except FileNotFoundError:
-        raise FileNotFoundError(file_name + ' not found.')
+    Parameters
+    __________
+    col_num : int
+        Number of column containing desired data.
+
+    Returns
+    _______
+    L : array of numbers
+        Array containing numbers from specified column of standard in.
+    None
+        Returns 'None' in the case that numerical data cannot be extracted.
+    """
+    if sys.stdin is None:
+        return None
     num = 0
     L = []
-
-    for l in f:
-        A = l.rstrip().split(',')
+    for l in sys.stdin:
         try:
+            A = [int(x) for x in l.split()]
             L.append(int(A[col_num]))
         except IndexError:
-            f.close()
             return None
         except ValueError:
-            f.close()
             return None
-        num += 1
-
-    f.close()
-
-    if num == 0:
-        return None
 
     return L
