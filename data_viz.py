@@ -1,3 +1,9 @@
+"""Various methods for data visualization
+
+    * boxplot - creates a boxplot from data and saves to file
+    * histogram - creates a histogram from data and saves to file
+    * combo - creates a boxplot and histogram from data, saves to file
+"""
 import sys
 import os.path
 from os import path
@@ -8,7 +14,26 @@ matplotlib.use('Agg')
 
 
 def boxplot(L, out_file_name):
+    """Create boxplot from given data and save to designated file
 
+    Parameters
+    __________
+    L : array of ints and floats
+        Array containing data whose boxplot is desired.
+    out_file_name : str
+        Name of file where figured is to be saved.
+
+    Retruns
+    _______
+        Creates file containing figure with Mean and Stdev of data in title.
+
+    Raises
+    ______
+    TypeError
+        Occurs when no file name is given.
+    SystemExit
+        Occurs when given file already exists in directory.
+    """
     try:
         exist = path.exists(out_file_name)
     except TypeError:
@@ -39,6 +64,26 @@ def boxplot(L, out_file_name):
 
 
 def histogram(L, out_file_name):
+    """Create histogram from given data and save to designated file
+
+    Parameters
+    __________
+    L : array of ints and floats
+        Array containing data whose histogram is desired.
+    out_file_name : str
+        Name of file where figured is to be saved.
+
+    Retruns
+    _______
+        Creates file containing figure with Mean and Stdev of data in title.
+
+    Raises
+    ______
+    TypeError
+        Occurs when no file name is given.
+    SystemExit
+        Occurs when given file already exists in directory.
+    """
     try:
         exist = path.exists(out_file_name)
     except TypeError:
@@ -69,6 +114,26 @@ def histogram(L, out_file_name):
 
 
 def combo(L, out_file_name):
+    """Create boxplot and histogram from data and save to designated file
+
+    Parameters
+    __________
+    L : array of ints and floats
+        Array containing data whose boxplot and histogram is desired.
+    out_file_name : str
+        Name of file where figured is to be saved.
+
+    Retruns
+    _______
+        Creates file containing figure with Mean and Stdev of data in title.
+
+    Raises
+    ______
+    TypeError
+        Occurs when no file name is given.
+    SystemExit
+        Occurs when given file already exists in directory.
+    """
     try:
         exist = path.exists(out_file_name)
     except TypeError:
