@@ -10,7 +10,11 @@ before_install:
     - conda activate test
     - conda install -y pycodestyle
     - conda install --yes python=3.6
-      
+
 script:
-    - bash test_viz.sh
+    - pycodestyle get_data.py
+    - pycodestyle data_viz.py
+    - pycodestyle math_lib.py
+    - pycodestyle test_viz.py
+    - pycodestyle viz.py
     - python test_viz.py

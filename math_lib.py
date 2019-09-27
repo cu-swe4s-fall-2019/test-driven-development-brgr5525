@@ -35,7 +35,7 @@ def list_mean(L):
     sum = 0
     for l in L:
         if not isinstance(l, int) and not isinstance(l, float):
-            raise ValueError('Mean undefined. Unsupported value in list.')
+            raise ValueError('Mean undefined. Unsupported value in L.')
         sum += l
 
     return sum/len(L)
@@ -64,7 +64,7 @@ def list_stdev(L):
     try:
         m = list_mean(L)
     except ValueError:
-        raise ValueError('Stdev undefined. Unsupported value in list.')
+        raise ValueError('Mean and Stdev undefined. Unsupported value in L.')
 
     if m is None:
         return None
