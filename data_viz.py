@@ -23,7 +23,7 @@ def boxplot(L, out_file_name):
     out_file_name : str
         Name of file where figured is to be saved.
 
-    Retruns
+    Returns
     _______
         Creates file containing figure with Mean and Stdev of data in title.
 
@@ -51,8 +51,13 @@ def boxplot(L, out_file_name):
 
     ax.boxplot(L)
 
-    mean = round(math_lib.list_mean(L), 5)
-    stdev = round(math_lib.list_stdev(L), 7)
+    mean = math_lib.list_mean(L)
+    stdev = math_lib.list_stdev(L)
+
+    if mean is not None:
+        mean = round(mean, 5)
+    if stdev is not None:
+        stdev = round(stdev, 7)
 
     title = str('Mean: ' + str(mean) + ' Stdev: ' + str(stdev))
     ax.set_title(title)
@@ -60,7 +65,12 @@ def boxplot(L, out_file_name):
     ax.set_xlabel('Value')
     ax.set_ylabel('Distribution')
 
-    plt.savefig(out_file_name, bbox_inches='tight')
+    try:
+        plt.savefig(out_file_name, bbox_inches='tight')
+    except ValueError:
+        raise ValueError('Out file type unsupported.')
+
+    return path.exists(out_file_name)
 
 
 def histogram(L, out_file_name):
@@ -73,7 +83,7 @@ def histogram(L, out_file_name):
     out_file_name : str
         Name of file where figured is to be saved.
 
-    Retruns
+    Returns
     _______
         Creates file containing figure with Mean and Stdev of data in title.
 
@@ -101,8 +111,13 @@ def histogram(L, out_file_name):
 
     ax.hist(L)
 
-    mean = round(math_lib.list_mean(L), 5)
-    stdev = round(math_lib.list_stdev(L), 7)
+    mean = math_lib.list_mean(L)
+    stdev = math_lib.list_stdev(L)
+
+    if mean is not None:
+        mean = round(mean, 5)
+    if stdev is not None:
+        stdev = round(stdev, 7)
 
     title = str('Mean: ' + str(mean) + ' Stdev: ' + str(stdev))
     ax.set_title(title)
@@ -110,7 +125,12 @@ def histogram(L, out_file_name):
     ax.set_xlabel('Value')
     ax.set_ylabel('Frequency')
 
-    plt.savefig(out_file_name, bbox_inches='tight')
+    try:
+        plt.savefig(out_file_name, bbox_inches='tight')
+    except ValueError:
+        raise ValueError('Out file type unsupported.')
+
+    return path.exists(out_file_name)
 
 
 def combo(L, out_file_name):
@@ -123,7 +143,7 @@ def combo(L, out_file_name):
     out_file_name : str
         Name of file where figured is to be saved.
 
-    Retruns
+    Returns
     _______
         Creates file containing figure with Mean and Stdev of data in title.
 
@@ -147,8 +167,13 @@ def combo(L, out_file_name):
     # Create the box subplot
     axs[0].boxplot(L)
 
-    mean = round(math_lib.list_mean(L), 5)
-    stdev = round(math_lib.list_stdev(L), 7)
+    mean = math_lib.list_mean(L)
+    stdev = math_lib.list_stdev(L)
+
+    if mean is not None:
+        mean = round(mean, 5)
+    if stdev is not None:
+        stdev = round(stdev, 7)
 
     title = str('Mean: ' + str(mean) + ' Stdev: ' + str(stdev))
     axs[0].set_title(title)
@@ -167,4 +192,9 @@ def combo(L, out_file_name):
     fig.subplots_adjust(left=0.08, right=0.98, bottom=0.05, top=0.9,
                         hspace=0.4, wspace=0.4)
 
-    plt.savefig(out_file_name, bbox_inches='tight')
+    try:
+        plt.savefig(out_file_name, bbox_inches='tight')
+    except ValueError:
+        raise ValueError('Out file type unsupported.')
+
+    return path.exists(out_file_name)
