@@ -8,8 +8,8 @@ import sys
 import os.path
 from os import path
 import math_lib
-import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib
 matplotlib.use('Agg')
 
 
