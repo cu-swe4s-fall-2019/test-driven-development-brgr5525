@@ -50,7 +50,7 @@ class TestMathLib(unittest.TestCase):
             math_lib.list_mean(L)
 
         self.assertEqual(str(ex.exception), 'Mean undefined.' +
-                                            ' Unsupported value in list.')
+                                            ' Unsupported value in L.')
 
     def test_list_mean_zero(self):
         r = math_lib.list_mean([0])
@@ -120,8 +120,8 @@ class TestMathLib(unittest.TestCase):
         with self.assertRaises(ValueError) as ex:
             math_lib.list_stdev(L)
 
-        self.assertEqual(str(ex.exception), 'Stdev undefined.' +
-                                            ' Unsupported value in list.')
+        self.assertEqual(str(ex.exception), 'Mean and Stdev undefined.' +
+                                            ' Unsupported value in L.')
 
     def test_list_stdev_single_element_list(self):
         r = math_lib.list_stdev([1])
